@@ -17,7 +17,7 @@ export class FileUpload extends Component {
       const reader = new FileReader();
 
       reader.onload = () => {
-        resolve(new Uint8Array(reader.result));
+        resolve(new Buffer(reader.result));
       };
 
       reader.onerror = err => {
