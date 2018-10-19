@@ -45,7 +45,7 @@ export class FileUpload extends Component {
   render() {
     return (
       <div>
-        {this.props.children || <label for={this.props.id}>Upload</label>}
+        {this.props.children || <label htmlFor={this.props.id}>Upload</label>}
         <input
           onChange={this.handleInput}
           type="file"
