@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as _ from 'lodash';
 import { FileUpload } from './file-upload';
-import { applyPatch, isIPS } from './parse-ips';
+import { applyPatch, mergeIPS, isIPS } from './parse-ips';
 
 import './styles.css';
 
@@ -32,10 +32,18 @@ const App = () => {
       <h1>IPSPatcher.js</h1>
       <FileUpload
         callback={files => downloadFile(patchFile(files), 'patched.bin')}
-        id="upload"
+        id="patchFile"
       >
-        <label for="upload">
+        <label for="patchFile">
           Click here, then select your IPS and file to patch
+        </label>
+      </FileUpload>
+      <FileUpload
+        callback={files => downloadFile(mergeIPS(files), 'merged.ips')}
+        id="mergeIPS"
+      >
+        <label for="mergeIPS">
+          Click here, then select every IPS file to merge
         </label>
       </FileUpload>
       <a id="hidden-download" />

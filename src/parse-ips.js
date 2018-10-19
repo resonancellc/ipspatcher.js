@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import { numToBuf } from './utils';
 
 /**
  * Checks if a file is a valid ips file
@@ -75,4 +76,30 @@ export const applyPatch = (file, ips) => {
     },
     Buffer.alloc(file.length),
   );
+};
+
+const parseSinglePatch = patch => {
+  const { address, length, data } = patch;
+  return Buffer.concat([
+    numToBuf(address).slice(1),
+    numToBuf(length).slice(2),
+    Buffer.from(data),
+  ]);
+};
+
+const createIPS = patchArray => {
+  const PATCH = Buffer.from('PATCH');
+  const END = Buffer.from('EOF');
+  const patches = _.map(patchArray, parseSinglePatch);
+  return Buffer.concat([PATCH, ...patches, END]);
+};
+
+/**
+ *
+ * @param {Array<Buffer>} ipsArray The ips patches to merge
+ * @returns {Buffer} The merged IPS patches
+ */
+export const mergeIPS = ipsArray => {
+  const patches = _.map(ipsArray, parseIPS);
+  return createIPS(_.flatten(patches));
 };
