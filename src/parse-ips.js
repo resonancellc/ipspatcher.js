@@ -1,5 +1,10 @@
 import * as _ from 'lodash';
 
+/**
+ * Checks if a file is a valid ips file
+ * @param {Buffer} ips The file to check
+ * @returns {boolean} Determines if the file is a valid ips
+ */
 export const isIPS = ips => {
   const patch = _.slice(ips, 0, 5);
   const end = _.slice(ips, -3);
