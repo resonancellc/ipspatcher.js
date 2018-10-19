@@ -1,6 +1,6 @@
 # IPSPather.js
 
-This is a quick little IPS patcher for the browser
+This is a quick little IPS patcher for the browser - [click here to use!](https://zaksabeast.github.io/ipspatcher.js/build/)
 
 ## Usage
 
