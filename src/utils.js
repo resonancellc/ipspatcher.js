@@ -6,3 +6,5 @@ export const numToBuf = num => {
     (num >>> 0) & 0xff,
   ]);
 };
+
+export const clickElementById = id => document.getElementById(id).click();
