@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as _ from 'lodash';
 import { FileUpload } from './file-upload';
+import { StyledButton } from './styled-button';
 import { applyPatch, mergeIPS, isIPS } from './ips-utils';
+import { clickElementById } from './utils';
 
 import './styles.css';
 
@@ -27,24 +29,27 @@ const downloadFile = (buffer, name) => {
 };
 
 const App = () => {
+  const patchId = 'patchFile';
+  const mergeId = 'mergeFile';
+
   return (
     <div className="App">
       <h1>IPSPatcher.js</h1>
       <FileUpload
         callback={files => downloadFile(patchFile(files), 'patched.bin')}
-        id="patchFile"
+        id={patchId}
       >
-        <label htmlFor="patchFile">
-          Click here, then select your IPS and file to patch
-        </label>
+        <StyledButton onClick={() => clickElementById(patchId)}>
+          Patch (Upload IPS and file)
+        </StyledButton>
       </FileUpload>
       <FileUpload
         callback={files => downloadFile(mergeIPS(files), 'merged.ips')}
-        id="mergeIPS"
+        id={mergeId}
       >
-        <label htmlFor="mergeIPS">
-          Click here, then select every IPS file to merge
-        </label>
+        <StyledButton onClick={() => clickElementById(mergeId)}>
+          Merge (Upload all IPSs)
+        </StyledButton>
       </FileUpload>
       <a id="hidden-download" />
     </div>
