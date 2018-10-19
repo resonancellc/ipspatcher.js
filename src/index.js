@@ -34,7 +34,9 @@ const App = () => {
         callback={files => downloadFile(patchFile(files), 'patched.bin')}
         id="upload"
       >
-        <label for="upload">Upload</label>
+        <label for="upload">
+          Click here, then select your IPS and file to patch
+        </label>
       </FileUpload>
       <a id="hidden-download" />
     </div>
