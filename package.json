@@ -1,0 +1,24 @@
+{
+  "name": "ipspatcher.js",
+  "version": "1.0.0",
+  "description": "Browser IPS patcher",
+  "keywords": [],
+  "author": "Zaksabeast",
+  "main": "src/index.js",
+  "dependencies": {
+    "lodash": "latest",
+    "react": "16.5.2",
+    "react-dom": "16.5.2",
+    "react-scripts": "2.0.3"
+  },
+  "devDependencies": {
+    "prettier": "^1.14.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "prettier": "echo \"Running prettier\" && prettier --write src/**/*.js && echo \"Finished\""
+  }
+}
