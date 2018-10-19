@@ -9,8 +9,9 @@ import { clickElementById } from './utils';
 import './styles.css';
 
 const patchFile = files => {
-  const ips = _.find(files, isIPS);
-  const [file] = _.xor([ips], files);
+  const file = _.find(files, file => !isIPS(file));
+  const patches = _.xor([ips], files);
+  const ips = mergeIPS(patches);
 
   return applyPatch(file, ips);
 };
@@ -40,7 +41,7 @@ const App = () => {
         id={patchId}
       >
         <StyledButton onClick={() => clickElementById(patchId)}>
-          Patch (Upload IPS and file)
+          Patch (Upload IPSs and the file to patch)
         </StyledButton>
       </FileUpload>
       <FileUpload
@@ -48,7 +49,7 @@ const App = () => {
         id={mergeId}
       >
         <StyledButton onClick={() => clickElementById(mergeId)}>
-          Merge (Upload all IPSs)
+          Merge (Upload IPSs)
         </StyledButton>
       </FileUpload>
       <a id="hidden-download" />
